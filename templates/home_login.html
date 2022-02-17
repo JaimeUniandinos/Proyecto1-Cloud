@@ -1,0 +1,29 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">
+App xx</h1>
+<h2 class="subtitle">
+  App de eventos
+</h2>
+
+<div class=container>
+<a href="{{ url_for('main.create_contest')}}" class="navbar-item">
+     Crear nuevo evento
+</a>
+</div>
+
+<div class="row">
+  <div class="column">
+  {% for task in query%}
+    <div class="card">
+        <img src="../static/uploads/images/{{task.banner_name}}"  style="width:100%">
+        <div class="container">
+            <h4><b>{{task.contest_name}}</b></h4>
+            <p>{{task.desciption}}</p>
+        </div>
+         <a href="/view_contest/{{task.id_contest}}" class="btn btn-danger btn-sm"> Ver</a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
